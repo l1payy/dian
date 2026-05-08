@@ -68,12 +68,6 @@
                 </div>
                 
                 <div class="flex items-center gap-4 ml-4">
-                    <button class="text-gray-500 hover:text-brand-dark transition">
-                        <i data-lucide="bell" class="w-5 h-5"></i>
-                    </button>
-                    <button class="text-gray-500 hover:text-brand-dark transition">
-                        <i data-lucide="history" class="w-5 h-5"></i>
-                    </button>
                     <div class="flex items-center gap-2 pl-4 border-l border-gray-200">
                         <div class="w-8 h-8 rounded-full bg-brand-dark flex items-center justify-center text-white">
                             <i data-lucide="user" class="w-4 h-4"></i>
