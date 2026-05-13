@@ -44,10 +44,6 @@
                 <option value="30_days" {{ request('range') == '30_days' ? 'selected' : '' }}>30 Hari Terakhir</option>
             </select>
         </form>
-        <button class="flex items-center gap-2 text-[10px] font-bold text-gray-400 hover:text-brand-dark transition uppercase tracking-widest">
-            <i data-lucide="sliders" class="w-4 h-4"></i>
-            Filter Lanjutan
-        </button>
     </div>
 
     <!-- Table -->

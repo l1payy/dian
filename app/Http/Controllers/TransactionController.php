@@ -32,16 +32,10 @@ class TransactionController extends Controller
         $totalTransactions = $statsQuery->count();
         $totalRevenue = $statsQuery->sum('total');
 
-        // Simple percentage calculation (mock for now as per design requirement)
-        $percentageTransactions = 12; // Example
-        $percentageRevenue = 8; // Example
-
         return view('transactions.index', compact(
             'transactions', 
             'totalTransactions', 
-            'totalRevenue',
-            'percentageTransactions',
-            'percentageRevenue'
+            'totalRevenue'
         ));
     }
 

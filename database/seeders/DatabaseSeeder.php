@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Pulpen Hitam',
                 'price' => 3000,
                 'stock' => 100,
-                'image' => 'storage\app\public\products\pulpen.png',
+                'image' => 'products/pulpen.png',
             ],
         ];
 
@@ -36,8 +36,8 @@ class DatabaseSeeder extends Seeder
         }
 
         // Settings
-        Setting::create(['key' => 'store_name', 'value' => 'Foto Copy Prima Diski']);
-        Setting::create(['key' => 'store_phone', 'value' => '+62 812-3456-7890']);
-        Setting::create(['key' => 'store_address', 'value' => 'Jl. Raya Pendidikan No. 45, Kecamatan Sukamaju, Kota Jakarta Selatan, 12345']);
+        Setting::create(['key' => 'store_name', 'value' => 'Toko Prima']);
+        Setting::create(['key' => 'store_phone', 'value' => '0813-6161-6708']);
+        Setting::create(['key' => 'store_address', 'value' => 'Jl. Sei Mencirim No.122, Medan Krio, Kec. Sunggal, Kabupaten Deli Serdang, Sumatera Utara']);
     }
 }

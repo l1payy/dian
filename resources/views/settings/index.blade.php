@@ -23,9 +23,6 @@
             </div>
             <div class="flex-1 text-center md:text-left">
                 <h3 class="text-2xl font-bold mb-1">{{ Auth::user()->name }}</h3>
-                <span class="inline-block px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/20 mb-4">
-                    {{ Auth::user()->role == 'admin' ? 'ADMINISTRATOR SISTEM' : 'STAF KASIR' }}
-                </span>
                 <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
                     <div class="flex items-center gap-2 px-4 py-2 bg-black/20 rounded-xl border border-white/5">
                         <i data-lucide="mail" class="w-4 h-4 text-white/50"></i>

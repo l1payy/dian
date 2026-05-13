@@ -8,22 +8,16 @@
 </head>
 <body class="bg-brand-bg h-screen flex flex-col items-center justify-center p-6">
     <div class="mb-8 text-center">
-        <div class="flex items-center gap-2 justify-center mb-2">
-            <div class="w-3 h-3 rounded-full bg-green-600 animate-pulse"></div>
-            <span class="text-[10px] font-bold text-green-800 tracking-widest uppercase">Sistem Aktif</span>
-        </div>
-    </div>
 
     <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-10">
         <div class="text-center mb-10">
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">Prima Diski - Sistem Kasir</h1>
-            <p class="text-sm text-gray-500">Selamat Datang di Precision Ledger</p>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Sistem Kasir Toko Prima</h1>
         </div>
 
         <form action="{{ route('login') }}" method="POST" class="space-y-6">
             @csrf
             <div>
-                <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Username / Email</label>
+                <label class="block text-left text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Email</label>
                 <div class="relative">
                     <input type="email" name="email" value="{{ old('email') }}" required placeholder="Masukkan email anda" class="w-full pl-10 pr-4 py-3 bg-brand-bg border-none rounded-xl text-sm focus:ring-2 focus:ring-brand-dark/20">
                     <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -38,7 +32,6 @@
             <div>
                 <div class="flex items-center justify-between mb-2">
                     <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest">Kata Sandi</label>
-                    <a href="#" class="text-[10px] font-bold text-green-700 hover:underline">Lupa Kata Sandi?</a>
                 </div>
                 <div class="relative">
                     <input type="password" name="password" required placeholder="••••••••" class="w-full pl-10 pr-12 py-3 bg-brand-bg border-none rounded-xl text-sm focus:ring-2 focus:ring-brand-dark/20">
@@ -63,7 +56,7 @@
     </div>
 
     <footer class="mt-12 text-[10px] text-gray-400 uppercase tracking-widest">
-        © 2024 Precision Ledger Systems. V2.1.0
+        © 2026 Toko Prima Copyright All Rights Reserved.
     </footer>
 </body>
 </html>

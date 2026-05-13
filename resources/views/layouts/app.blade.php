@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prima Diski - Sistem Kasir</title>
+    <title>Toko Prima - Sistem Kasir</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://unpkg.com/lucide@latest"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -13,8 +13,8 @@
         <!-- Sidebar -->
         <aside class="w-40 bg-brand-dark flex-shrink-0 flex flex-col">
             <div class="p-4 mb-4">
-                <h1 class="text-white font-bold text-lg leading-tight">Prima Diski</h1>
-                <p class="text-white text-[10px] opacity-70">SISTEM KASIR</p>
+                <h1 class="text-white font-bold text-lg leading-tight">Toko Prima</h1>
+                <p class="text-white text-[10px] opacity-70">Website Sistem Kasir</p>
             </div>
             
             <nav class="flex-1 px-2 space-y-1">

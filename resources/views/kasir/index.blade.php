@@ -12,9 +12,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($products as $product)
             <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group border border-gray-100">
-                <div class="aspect-video bg-gray-100 relative overflow-hidden">
+                <div class="aspect-square bg-gray-50 relative overflow-hidden p-4">
                     @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-contain transition duration-300 group-hover:scale-110">
                     @else
                         <div class="w-full h-full flex items-center justify-center text-gray-300">
                             <i data-lucide="image" class="w-12 h-12"></i>
@@ -62,10 +62,34 @@
                 <span id="cart-total" class="text-xl font-bold text-gray-800">Rp 0</span>
             </div>
 
-            <button id="btn-pay" onclick="processPayment()" disabled class="w-full bg-brand-dark hover:bg-brand-light disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2">
+            <button id="btn-pay" onclick="showConfirmation()" disabled class="w-full bg-brand-dark hover:bg-brand-light disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2">
                 <i data-lucide="wallet" class="w-5 h-5"></i>
                 <span>Proses Pembayaran</span>
             </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Konfirmasi Pembayaran -->
+<div id="modal-confirmation" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden transform transition-all">
+            <div class="p-8 text-center">
+                <div class="w-20 h-20 bg-brand-bg rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="help-circle" class="w-10 h-10 text-brand-dark"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Konfirmasi Pembayaran</h3>
+                <p class="text-gray-500 text-sm mb-8">Apakah anda yakin ingin melakukan pembayaran?</p>
+                <div class="flex gap-4">
+                    <button onclick="closeConfirmation()" class="flex-1 px-6 py-3 rounded-xl border border-gray-200 text-gray-600 font-bold hover:bg-gray-50 transition">
+                        Tidak
+                    </button>
+                    <button onclick="confirmPayment()" class="flex-1 px-6 py-3 rounded-xl bg-brand-dark text-white font-bold hover:bg-brand-light transition">
+                        Iyaa
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -155,6 +179,25 @@
         lucide.createIcons();
     }
 
+    function showConfirmation() {
+        document.getElementById('modal-confirmation').classList.remove('hidden');
+        lucide.createIcons();
+    }
+
+    function closeConfirmation() {
+        document.getElementById('modal-confirmation').classList.add('hidden');
+    }
+
+    async function confirmPayment() {
+        closeConfirmation();
+        const btnPay = document.getElementById('btn-pay');
+        btnPay.disabled = true;
+        btnPay.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Memproses...</span>';
+        lucide.createIcons();
+        
+        await processPayment();
+    }
+
     async function processPayment() {
         const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
         const paid = total; // Set paid equal to total since we removed manual input
@@ -177,10 +220,13 @@
         if (response.ok) {
             alert('Transaksi Berhasil!');
             clearCart();
-            document.getElementById('paid-amount').value = '';
             location.reload(); // Refresh to update stocks
         } else {
             alert('Gagal: ' + result.message);
+            const btnPay = document.getElementById('btn-pay');
+            btnPay.disabled = false;
+            btnPay.innerHTML = '<i data-lucide="wallet" class="w-5 h-5"></i><span>Proses Pembayaran</span>';
+            lucide.createIcons();
         }
     }
 </script>
